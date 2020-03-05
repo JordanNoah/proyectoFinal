@@ -119,6 +119,36 @@ include "../includes/menu.php";
     </div>
 </div>
 <script>
+    $(document).on("click",".removCate",function(){
+        var id = $(this).attr("id");
+        $.ajax({
+            type:"post",
+            url:"http://localhost/proyectHipermedial/scripts/removeCate.php",
+            data:{
+                id:id
+            },
+            success:function(res){
+                if(res!="0"){
+                    llenartablaCategoria();
+                }
+            }
+        });
+    });
+    $(document).on("click",".removProduc",function(){
+        var id = $(this).attr("id");
+        $.ajax({
+            type:"post",
+            url:"http://localhost/proyectHipermedial/scripts/removeProduct.php",
+            data:{
+                id:id
+            },
+            success:function(res){
+                if(res!="0"){
+                    llenarTablaProductos();
+                }
+            }
+        });
+    });
     $("document").ready(function(){
         llenartablaCategoria();
         llenarTablaProductos();
